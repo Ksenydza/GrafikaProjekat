@@ -1,0 +1,134 @@
+/* ── Shell ───────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+.app-header {
+  flex: 0 0 var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  user-select: none;
+}
+
+.app-header__logo {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+  letter-spacing: 0.4px;
+}
+
+.app-header__version {
+  font-size: 11px;
+  color: var(--color-text-dim);
+}
+
+.app-header__controls {
+  display: flex;
+  gap: 6px;
+}
+
+.ctrl-btn {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.ctrl-btn:hover {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+}
+
+/* ── Workspace ───────────────────────────────────────────────────────── */
+.app-workspace {
+  flex: 1 1 0;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────────────── */
+.app-toolbar {
+  flex: 0 0 var(--toolbar-width);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  gap: 4px;
+}
+
+/* ── Canvas area ─────────────────────────────────────────────────────── */
+.app-canvas-area {
+  flex: 1 1 0;
+  position: relative;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-canvas {
+  display: block;
+  image-rendering: pixelated;
+  /* Pixel dimensions are set programmatically from GRID_COLS/ROWS * CELL_SIZE */
+  max-width:        100%;
+  max-height:       100%;
+  background-color: var(--color-bg); /* Empty cells (alpha=0) show this */
+  cursor:           crosshair;
+}
+
+/* ── Right panel ─────────────────────────────────────────────────────── */
+.app-panel {
+  flex: 0 0 var(--panel-width);
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.app-footer {
+  flex: 0 0 var(--footer-height);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  font-size: 11px;
+  color: var(--color-text-dim);
+  user-select: none;
+}
+
+/* ── Responsive collapse ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app-panel {
+    display: none;
+  }
+
+  .app-toolbar {
+    flex-direction: row;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 40px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 8px;
+  }
+
+  .app-workspace {
+    flex-direction: column;
+  }
+}
